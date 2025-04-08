@@ -1,15 +1,24 @@
 <div class="upload-container">
     <h2>Subir Imagen</h2>
-  
-    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-    <button (click)="uploadImage()">Subir</button>
-  
-    <p>{{ uploadMessage }}</p>
-  
-@if (imageUrl) {
-    <div>
-        <p>Imagen subida:</p>
-        <img [src]="imageUrl" alt="Imagen subida" width="300" />
-    </div>
-}
+
+    @if (imageUrl) {
+        <div class="preview">
+            <img [src]="imageUrl" alt="Imagen subida" />
+        </div>
+    }
+
+    @if (!imageUrl) {
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+        <button (click)="uploadImage()" [disabled]="!selectedFile">
+            Subir Imagen
+        </button>
+    } @else {
+        <button [routerLink]="''">Regresar</button>
+    }
+
+
+    <p class="message" [ngClass]="{ success: imageUrl, error: !imageUrl && uploadMessage }">
+        {{ uploadMessage }}
+    </p>
 </div>

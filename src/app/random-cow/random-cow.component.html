@@ -1,0 +1,22 @@
+<div class="cow-container">
+    <h2 (click)="cowUrl=''">Vaca aleatoria 🐄</h2>
+
+    <button (click)="getRandomCow()" [disabled]="loading">
+        {{ loading ? 'Cargando...' : 'Obtener una Vaca' }}
+    </button>
+
+    @if (!cowUrl) {
+        <br>
+        <button [routerLink]="'upload-random-cow'" style="background-color: #c34ab3;">Regalar una Vaca</button>
+    }
+
+    @if (error) {
+        <p class="error">{{ error }}</p>
+    }
+
+    @if (cowUrl) {
+        <div class="image-wrapper">
+            <img [src]="cowUrl" alt="Vaca aleatoria" />
+        </div>
+    }
+</div>
