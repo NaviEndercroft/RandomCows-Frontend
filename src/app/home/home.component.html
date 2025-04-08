@@ -1,0 +1,15 @@
+<div class="upload-container">
+    <h2>Subir Imagen</h2>
+  
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    <button (click)="uploadImage()">Subir</button>
+  
+    <p>{{ uploadMessage }}</p>
+  
+@if (imageUrl) {
+    <div>
+        <p>Imagen subida:</p>
+        <img [src]="imageUrl" alt="Imagen subida" width="300" />
+    </div>
+}
+</div>
