@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,9 @@ export class HomeComponent {
   imageUrl: string | null = null;
   uploadMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log(environment.apiUrl);
+  }
 
   onFileSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
@@ -31,10 +35,10 @@ export class HomeComponent {
     const formData = new FormData();
     formData.append('image', this.selectedFile);
 
-    this.http.post<any>('http://localhost:3000/upload', formData).subscribe({
+    this.http.post<any>(`${environment.apiUrl}/upload`, formData).subscribe({
       next: (res) => {
         this.uploadMessage = res.message;
-        this.imageUrl = 'http://localhost:3000' + res.path;
+        this.imageUrl = `${environment.apiUrl}/${res.path}`;
       },
       error: (err) => {
         this.uploadMessage = 'Error al subir la imagen';
