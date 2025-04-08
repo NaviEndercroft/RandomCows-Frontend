@@ -38,7 +38,7 @@ export class HomeComponent {
     this.http.post<any>(`${environment.apiUrl}/upload`, formData).subscribe({
       next: (res) => {
         this.uploadMessage = res.message;
-        this.imageUrl = `${environment.apiUrl}/${res.path}`;
+        this.imageUrl = `${environment.apiUrl}${res.path}`;
       },
       error: (err) => {
         this.uploadMessage = 'Error al subir la imagen';
