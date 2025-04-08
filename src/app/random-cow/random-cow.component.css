@@ -1,0 +1,49 @@
+.cow-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+h2 {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  background-color: #8bc34a;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+button:disabled {
+  background-color: #c8e6c9;
+  cursor: wait;
+}
+
+.image-wrapper img {
+  max-width: 60vw;
+  max-height: 70vh;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 1rem;
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .image-wrapper img {
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+}
